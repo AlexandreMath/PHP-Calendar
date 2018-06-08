@@ -1,0 +1,16 @@
+{
+    "name": "PHP/calendar",
+    "authors": [
+        {
+            "name": "Alexandre MATHIEU",
+            "email": "info@underdogweb.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Calendar\\": "src/Calendar",
+            "App\\": "src/App"
+        }
+    },
+    "require": {}
+}
