@@ -15,11 +15,11 @@ class Events
     
     /**
      * Récupère les évènements commençant entre 2 dates
-     * @param \DateTime $start
-     * @param \DateTime $end
+     * @param \DateTimeInterface $start
+     * @param \DateTimeInterface $end
      * @return Array
      */
-    public function getEventsBetween (\DateTime $start, \DateTime $end): Array
+    public function getEventsBetween (\DateTimeInterface $start, \DateTimeInterface $end): Array
     {
         $sql =  "SELECT * FROM events WHERE start BETWEEN '{$start->format('Y-m-d 00:00:00')}' AND '{$end->format('Y-m-d 23:59:59')}' ORDER BY start ASC";
         $statement = $this->pdo->query($sql);
@@ -28,11 +28,11 @@ class Events
     }
     /**
      * Récupère les évènements commençant entre 2 dates indexé par jour
-     * @param \DateTime $start
-     * @param \DateTime $end
+     * @param \DateTimeInterface $start
+     * @param \DateTimeInterface $end
      * @return Array
      */
-    public function getEventsBetweenByDay (\DateTime $start, \DateTime $end): Array
+    public function getEventsBetweenByDay (\DateTimeInterface $start, \DateTimeInterface $end): Array
     {
         $events = $this->getEventsBetween($start, $end);
         $days = [];
@@ -99,7 +99,7 @@ class Events
     }
 
     /**
-     * Supprime un évènement au niveau de la base de données via son id
+     * Supprime un évènement au niveau de la base de données via son id --- WORK?
      * @param Event $event
      * @return Bool
     */
@@ -113,8 +113,8 @@ class Events
     {
         $event->setName($data['name']);
         $event->setDescription($data['description']);
-        $event->setStart(\DateTime::createFromFormat('Y-m-d H:i', $data['date'] . ' ' . $data['start'])->format('Y-m-d H:i:s'));
-        $event->setEnd(\DateTime::createFromFormat('Y-m-d H:i', $data['date'] . ' ' . $data['end'])->format('Y-m-d H:i:s'));
+        $event->setStart(\DateTimeImmutable::createFromFormat('Y-m-d H:i', $data['date'] . ' ' . $data['start'])->format('Y-m-d H:i:s'));
+        $event->setEnd(\DateTimeImmutable::createFromFormat('Y-m-d H:i', $data['date'] . ' ' . $data['end'])->format('Y-m-d H:i:s'));
         return $event;
     }
 }

@@ -7,7 +7,7 @@
         $start = $month->getStartingDay();
         $start = $start->format('N') === '1' ? $start : $month->getStartingDay()->modify('last monday'); 
         $weeks = $month->getWeeks();
-        $end = (clone $start)->modify('+'.(6 + 7 * ($weeks-1)) .'days');
+        $end = $start->modify('+'.(6 + 7 * ($weeks-1)) .'days');
         $events = $events->getEventsBetweenByDay($start, $end);
         require 'views/header.php';
         
@@ -22,8 +22,8 @@
         </div>
         <?php endif; ?>
         <div>
-            <a href="index.php?month=<?= $month->previousMonth()->month; ?>&year=<?= $month->previousMonth()->year; ?>" class="btn btn-primary">&lt;</a>
-            <a href="index.php?month=<?= $month->nextMonth()->month; ?>&year=<?= $month->nextMonth()->year; ?>" class="btn btn-primary">&gt;</a>
+            <a href="index.php?month=<?= $month->previousMonth()->month; ?>&year=<?= $month->previousMonth()->year; ?>" class="btn btn-success">&lt;</a>
+            <a href="index.php?month=<?= $month->nextMonth()->month; ?>&year=<?= $month->nextMonth()->year; ?>" class="btn btn-success">&gt;</a>
         </div>
     </div>
 
@@ -33,7 +33,7 @@
         <?php for ($i=0; $i < $month->getWeeks(); $i++):?>
         <tr>
             <?php foreach ($month->days as $k => $day): 
-                $date = (clone $start)->modify("+" . ($k + $i * 7) . "days");
+                $date = $start->modify("+" . ($k + $i * 7) . "days");
                 $eventsForDay = $events[$date->format('Y-m-d')] ?? [] ; 
                 $isToday = date('Y-m-d') === $date->format('Y-m-d');   
             ?>

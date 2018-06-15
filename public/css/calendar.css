@@ -1,4 +1,16 @@
-
+a{
+    color: #28a745;
+}
+a:hover{
+    background-color: #28a745;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid rgba(214, 214, 214, 0.7);
+    padding: 2px 4px;
+}
+.calendar{
+    position: relative;
+}
 .calendar__table{
     width: 100%;
     height: calc(100vh - 128px);
@@ -10,6 +22,10 @@
     width: 14.29%;
     height: 20%;
 }
+.calendar__table td.is-today{
+    background-color: rgba(226, 226, 226, 0.822);
+}
+
 .calendar__table--6weeks td{
     height: 16.66%;
 }
@@ -23,4 +39,29 @@
 }
 .calendar__othermonth .calendar__day{
     opacity: 0.3;
+}
+.calendar__button{
+    display: block;
+    width: 55px;
+    height: 55px;  
+    line-height: 50px;
+    text-align: center;
+    color: #fff; 
+    font-size: 30px;
+    background-color: #28a745;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    transition: transform 0.3s;
+    box-shadow: 0px 6px 10px 0px #0000001a, 0px 1px 18px 0px #0000001a,0px 3px 5px -1px #0003;
+}
+.calendar__button:hover{
+    transform: scale(1.2);    
+    text-decoration: none;
+    color: #fff; 
+    
+}
+.navbar{
+    background-color:#28a746cc!important;
 }

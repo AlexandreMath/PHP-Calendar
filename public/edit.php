@@ -47,7 +47,7 @@
         <?php render('form', ['data' => $data, 'errors' => $errors]); ?>
         
         <div class="form-group">
-            <button class="btn btn-primary" type="submit">Modifier l'événement</button>
+            <button class="btn btn-success" type="submit">Modifier l'événement</button>
         </div>
 
     </form>

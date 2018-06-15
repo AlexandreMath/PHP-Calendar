@@ -34,7 +34,7 @@ render('header', ['title' => 'Ajouter un événement']);
 <div class="container">
     <?php if (!empty($errors)):?>
         <div class="alert alert-danger">
-            Merce de corriger vos erreurs!
+            Merci de corriger vos erreurs!
         </div>
     <?php endif; ?>
 
@@ -45,7 +45,7 @@ render('header', ['title' => 'Ajouter un événement']);
        <?php render('form', ['data' => $data, 'errors' => $errors]); ?>
         
         <div class="form-group">
-            <button class="btn btn-primary" type="submit">Ajouter l'événement</button>
+            <button class="btn btn-success" type="submit">Ajouter l'événement</button>
         </div>
 
     </form>
